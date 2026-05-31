@@ -1,0 +1,1039 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+/* 1. UNIVERSAL BASE CONFIGURATION */
+* { 
+    margin: 0; 
+    padding: 0; /* Fixed: changed 'auto' to '0' */
+    box-sizing: border-box; 
+    font-family: "Space Grotesk", sans-serif; 
+    font-optical-sizing: auto; 
+    font-weight: 400; /* Fixed: replaced placeholder with standard default weight */
+    font-style: normal;
+    color: #ffffff; /* Added: sets a consistent default text color */
+    font-size: 20px; /* Added: sets a consistent base font size for better scaling */
+}
+
+body { 
+    background-color: #040236; 
+    color: #ffffff;
+}
+
+body, body * {
+    color: #ffffff !important;
+}
+
+section { 
+    width: 100%; 
+    min-height: 100vh;
+    background-color: #040236;
+}
+
+nav { 
+    position: sticky !important;
+    top: 0; /* Added: sticky requires a directional offset to function */
+    z-index: 1000; /* Added: ensures navbar stays above section content */
+}
+
+.custom-nav { 
+     background: linear-gradient(90deg, #0d1b3c 0%, #0a245d 50%, #020612 100%) !important;
+    border-bottom: 2px solid #00f2fe; 
+    
+    /* Sticky settings */
+    position: sticky !important;
+    top: 0;
+    z-index: 1000;
+
+    /* Cyan Glowing Shadow Added Below */
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.4),  /* Soft wide outer glow */
+                0 1px 5px rgba(0, 255, 255, 0.2);   /* Sharp nearby inner glow */
+}
+
+
+/* 2. NAVIGATION LINKS & UNIVERSAL HOVER EFFECTS */
+.logo, nav a, .nav-link, a { 
+    color: #ffffff !important; /* Unified base color */
+    text-decoration: none; 
+    font-weight: 600; 
+    letter-spacing: 0.5px; 
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, transform 0.2s ease, border-bottom 0.3s ease; 
+    display: inline-block; 
+}
+
+.logo:hover, nav a:hover, .nav-link:hover, a:hover { 
+    color: #00f2fe !important; 
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4); 
+    transform: translateY(-1px); 
+    border-bottom: 1px solid #00FFFF; /* Cleaned up duplicate hover rules into one block */
+}
+
+/* 3. CYBER-MINIMALIST LOGO */
+/* ========================================================= 
+   CYBER-MINIMALIST LOGO WITH HOVER REVEAL
+========================================================= */
+.magical-brand { 
+    font-family: 'Space Grotesk', sans-serif !important; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-size: 1.2Srem; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 12px; /* Adds space between your name, title, and dot */
+    text-decoration: none; 
+    background: transparent !important; 
+    padding: 0 !important;
+}
+
+.magical-brand .initials { 
+    color: #ffffff !important; 
+    transition: color 0.3s ease;
+    /* Premium glow effect on your name */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.4); 
+}
+
+.magical-brand .hidden-letters { 
+    display: inline-block; 
+    max-width: 0; /* Keeps it completely hidden initially */
+    opacity: 0; 
+    overflow: hidden; /* Prevents text from looking clumsy while closed */
+    white-space: nowrap; /* Forces text to stay on one single line */
+    font-size: 0.9rem; /* Adjusted for better legibility */
+    letter-spacing: 1px; 
+    color: #00f2fe; 
+    font-weight: 500; 
+    vertical-align: middle; 
+    /* Smooth sliding transition */
+    transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease; 
+}
+
+.magical-brand .magic-dot { 
+    width: 6px; 
+    height: 6px; 
+    background-color: #00f2fe; 
+    border-radius: 50%; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.bio{
+    font-size: 1.5rem;
+    line-height: 1.6;       /* Adds space between lines of text */
+    color: #ffffff;         /* All text turned white */
+    margin-bottom: 30px;    /* Pushes the Download button down safely */
+}
+
+
+/* =========================================================
+   HOVER ACTIONS: Triggers ONLY when touching the name container
+========================================================= */
+.magical-brand:hover .hidden-letters { 
+    max-width: 200px; /* Expands to reveal the full text */
+    opacity: 1; 
+    margin-left: 5px;
+}
+
+.magical-brand:hover .magic-dot { 
+    transform: scale(1.4); 
+    box-shadow: 0 0 10px #00f2fe;
+}
+
+.magical-brand:hover .initials {
+    color: #23c8ff !important; /* Changes name to neon cyan on hover */
+}
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(280px, 440px) minmax(300px, 1fr);
+  align-items: center;
+  gap: 3rem;
+  padding: 0 10%;
+  background-color:#00091d; /* Clean dark background */
+}
+
+/* The massive background circle from your sketch */
+/* ==================== BOUNCE EFFECT FOR THE LARGE CIRCLE ==================== */
+
+.large-bg-circle {
+  position: relative;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6f42c1, #007bff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:
+    0 0 40px rgba(0, 255, 255, 0.35),
+    0 0 80px rgba(0, 255, 255, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.15);
+  z-index: 1;
+
+  /* NEW CODE: Activates a continuous, smooth floating bounce */
+  animation: smoothCircleFloat 4s ease-in-out infinite;
+}
+
+/* KEYFRAMES TIMELINE: Directs the up and down movement */
+@keyframes smoothCircleFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px); /* Moves up smoothly by 15px at the midpoint */
+  }
+  100% {
+    transform: translateY(0px);  /* Returns gently back to its base position */
+  }
+}
+
+
+.large-bg-circle::before {
+  content: '';
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.18) 0%, transparent 55%);
+  filter: blur(18px);
+  z-index: -1;
+}
+
+/* The smaller inner profile picture circle */
+.profile-circle {
+  width: 180px;               /* Fixed: Adjusted size so it sits perfectly inside the larger circle */
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #2ccffc 0%, #bc3ac6 100%);
+}
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Typography positioning */
+/* Subtle Neon Background Glow behind the Text Block */
+.hero-text::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+  width: 120%;  /* Makes the glow spread wider than the text */
+  height: 120%; /* Makes the glow spread taller than the text */
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(42, 17, 204, 0.05) 50%, transparent 70%);
+  z-index: -1;  /* Keeps the glow behind your words so it stays perfectly readable */
+  pointer-events: none; /* Prevents the glow layer from interfering with text highlighting or clicks */
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2; /* Keeps text on top of the circles */
+  max-width: 540px;
+  display: flex;
+  left:70px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+.hero-text h1,
+.hero-text h2 {
+  margin: 0;
+}
+#native-typewriter {
+  display: inline-block;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color:rgba(255, 255, 255, 0.9);
+  border-right: 3px solid rgba(1, 9, 80, 0.921);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink-caret 0.8s steps(1) infinite ;
+}
+@keyframes blink-caret {
+  0%, 100% { border-color: rgb(21, 178, 209); }
+  50% { border-color: transparent; }
+}
+.btn-container {
+    background: linear-gradient(135deg, #00f2fe, #2d1aaa);
+    border: none;
+    padding: 12px 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    margin-top: 0;
+    align-self: flex-start;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #ffffff;
+}
+.btn-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 242, 254, 0.4);
+}
+@media (max-width: 960px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 3rem 6%;
+  }
+  .large-bg-circle {
+    width: 320px;
+    height: 320px;
+  }
+  .hero-text {
+    align-items: center;
+    text-align: center;
+  }
+  #native-typewriter {
+    font-size: 1.55rem;
+  }
+}
+/* Base Section Layout */
+/* ==========================================================================
+   1. Section Base Setup
+   ========================================================================== */
+#About {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  min-height: 80vh;
+}
+
+.section-text {
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-heading {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-pic-container {
+  display: flex;
+  height: 400px;
+  width: 400px;
+  margin: auto;
+}
+
+/* ==========================================================================
+   2. Master Flexible Grid Container (2 on Top, 1 on Bottom)
+   ========================================================================== */
+.section-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* 2 Equal Columns on Desktop */
+    align-items: stretch;                   /* Forces row items to match heights */
+    gap: 30px;                              /* Clean box spacing gutter */
+    width: 100%;
+    max-width: 1140px;
+    margin: 2rem auto 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Position the 3rd card wrapper (Achievements) centered on the second row */
+.section-achievements-container {
+    grid-column: 1 / span 2;                /* Spans completely across both tracks */
+    justify-self: center;                   /* Centers the container item horizontally */
+    width: 50%;                             /* Matches the exact visual width of a top card */
+    min-width: 340px;
+}
+
+/* Direct clean overrides for structural HTML intermediate wrappers */
+.about-details-container,
+.section-certification-container,
+.about-container,
+.about-details-certification-container,
+.about-certification-container,
+.about-details-achieveme#nts-container,
+.about-achievements-container {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    max-width: none !important;             /* Removes the restrictive 360px limit */
+}
+
+/* ==========================================================================
+   3. Individual Cards Box Core Layout
+   ========================================================================== */
+.details-container,
+.details-certification-container,
+.details-achievements-container {
+    height: 100%;
+background: linear-gradient(to bottom, #020c36 0%, #000000 100%) !important;
+ /* Deep dark navy translucent background */
+    backdrop-filter: blur(12px);       /* Frosty glass window effect */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgb(18, 240, 252); /* Subtle cyber neon border */
+    box-shadow: #00f2fe 2px 2px 20px !important; /* Neon glow + depth shadow */
+    border-radius: 3rem;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow:
+        0 0 30px rgba(0, 242, 254, 0.05),     /* Soft outer neon aura */
+        0 16px 40px rgba(0, 0, 0, 0.4),        /* Strong deep shadow for separation */
+        inset 0 0 12px rgba(0, 242, 254, 0.08); /* Internal edge glow */
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+/* Hover style to make the card look active and illuminated */
+.details-container:hover,
+.details-certification-container:hover,
+.details-achievements-container:hover {
+    transform: translateY(-5px);
+    background: #020c36 !important;/* Slightly brightens container backplate */
+    border-color:3px solid rgba(19, 206, 216, 0.893) inset rgba(0, 238, 255, 0.9) !important; /* border flare */
+    box-shadow:
+        0 0 40px rgba(0, 242, 254, 0.25),
+        0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ==========================================================================
+   4. Typography, Internal Text Elements, and Lists
+   ========================================================================== */
+.education-text-group,
+.certification-text-group,
+.achievements-text-group {
+   color: #f4f5f5 !important;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+}
+
+.details-container h3,
+.details-certification-container h3,
+.details-achievements-container h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fdffff;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+.details-container p,
+.details-certification-container p,
+.details-achievements-container p,
+.details-container ul li,
+.details-certification-container ul li,
+.details-achievements-container ul li {
+    color: #ffffff !important;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.details-container *,
+.details-certification-container *,
+.details-achievements-container * {
+    color: #ffffff !important;
+}
+
+.details-container ul,
+.details-certification-container ul,
+.details-achievements-container ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.details-container ul li,
+.details-certification-container ul li,
+.details-achievements-container ul li {
+    margin-bottom: 6px;
+}
+
+/* ==========================================================================
+   5. Icon Assets Layout Size
+   ========================================================================== */
+.details-container .icon,
+.details-certification-container .certi-icon,
+.details-achievements-container .certi-icon {
+    width: 72px !important;
+    height: 72px !important;
+    min-width: 72px;
+    min-height: 72px;
+    object-fit: contain !important;
+    flex-shrink: 0;
+    margin: 0;
+    align-self: flex-start;
+    padding: 14px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================================================
+   6. Clean Responsiveness (Stacks into 1 Column on Mobile)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .section-container {
+    grid-template-columns: 1fr; /* Stacks layout downward vertically */
+    gap: 24px;
+    
+  }
+  
+  .section-achievements-container {
+    grid-column: unset;
+    justify-self: center;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .about-details-container,
+  .section-certification-container {
+    align-items: center;
+    width: 100%;
+  }
+
+  .details-container,
+  .details-certification-container,
+  .details-achievements-container {
+    width: 100% !important;
+    max-width: 500px;
+    margin: 0 auto;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: inset 0 0 12px rgba(14, 223, 234, 0.921), 0 0 20px rgba(0, 242, 254, 0.2);
+  }
+  
+  .education-text-group,
+  .certification-text-group,
+  .achievements-text-group {
+    text-align: center;
+  }
+  
+  .details-container ul,
+  .details-certification-container ul,
+  .details-achievements-container ul {
+    text-align: left;
+    display: inline-block;
+  }
+  
+  .details-container .icon,
+  .details-certification-container .certi-icon,
+  .details-achievements-container .certi-icon {
+    align-self: center !important;
+    margin-bottom: 10px;
+  }
+}
+
+
+/* Remove default bullets */
+.skills-list {
+    list-style: none;
+    padding-left: 0;
+}
+.skills-list li {
+    background: rgba(7, 0, 207, 0.962);
+    border: 1px solid rgba(0, 242, 254, 0.28);
+    border-radius: 12px;
+    padding: 8px 16px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #ffffff;
+    box-shadow: 0 0 14px rgba(0, 242, 254, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.skills-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 22px rgba(0, 242, 254, 0.45);
+    border-color: rgba(0, 242, 254, 0.45);
+}
+.skills-list li::before {
+    content: '✓';
+    color: #00f2fe;
+    margin-right: 8px;
+}
+.skills-list li:hover::before {
+    color: #00c8fe;
+}
+.skills-list li::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #00f2fe;
+    border-radius: 50%;
+    margin-left: 12px;
+    transition: background-color 0.2s ease;
+}
+
+/* Skills card alignment */
+.skills-container {
+    display: grid;
+    grid-template-columns:1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* align-items: stretch; */
+}
+@media (min-width: 769px) {
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr); /* Generates 2 equal-width columns */
+    }
+}
+
+.skill-item {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border:  1px solid rgba(30, 194, 239, 0.973);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 1rem;
+    box-sizing: border-box;
+    box-shadow:
+        0 0 24px rgba(0, 242, 254, 0.25),
+        0 10px 30px rgba(15, 23, 42, 0.14);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 34px rgba(0, 242, 254, 0.45),
+        0 16px 40px rgba(15, 23, 42, 0.18);
+    border-color: rgba(0, 242, 254, 0.45);
+}
+
+.skill-item p {
+    margin: 0;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.skill-icon {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.25s ease, filter 0.25s ease;
+    filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.35));
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 18px rgba(0, 242, 254, 0.45));
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 3rem 4%;
+    }
+    .skill-icon {
+        width: 72px;
+        height: 72px;
+    }
+    .skill-container{
+      max-width: 480px;
+    }
+}
+/* Container layout adjustment to handle the text wrapper */
+/* Container layout adjustment to handle the text wrapper */
+/* Container layout adjustment to handle the text wrapper */
+.skill-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Background track of the volume bar */
+.progress-track {
+    width: 100%;
+    height: 10px; /* Slightly thicker for better visual impact */
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 242, 254, 0.1);
+}
+
+/* Glowing, animated in-progress level indicator */
+.progress-bar {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #0072ff, #00f2fe, #0072ff);
+    background-size: 200% 100%; /* Needed for the flowing gradient effect */
+    
+    /* Attaches the two looping animations: flow and breathing pulse */
+    animation: 
+        magicFlow 3s linear infinite,
+        magicPulse 2s ease-in-out infinite alternate;
+}
+
+/* Animation 1: Flowing magical energy wave inside the bar */
+@keyframes magicFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* Animation 2: Breathing neon aura that mimics active volume/charging */
+@keyframes magicPulse {
+    0% {
+        box-shadow: 0 0 8px rgba(25, 82, 85, 0.919), 0 0 3px rgba(0, 242, 254, 0.3);
+        opacity: 0.85;
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(0, 238, 255, 0.9), 0 0 8px rgba(0, 242, 254, 0.6);
+        opacity: 1;
+    }
+}
+
+/* Hover over card intensifies the energetic speed and glow */
+.skill-item:hover .progress-bar {
+    animation-duration: 1.5s, 1s; /* Speeds up the magic when hovered */
+    filter: brightness(1.2);
+}
+.skills-p { font-size: 14px; line-height: 1.6; color: #b0c2f2; margin-top: 20px; border-top: 1px solid rgba(111, 177, 252, 0.2); padding-top: 15px; }
+
+/* Projects Section Styling */
+/* Container & Global Font */
+.projects-section {
+  background-color: #0c0031; /* Deep midnight navy background */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+   box-shadow: 0 0 15px rgba(92, 84, 237, 0.4), 
+                inset 0 0 10px rgba(16, 177, 246, 0.979) !important;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+/* Grid Grid Alignment */
+.projects-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Core Card Structure */
+.project-card {
+  background-color: radial-gradient(circle at top, #002435 0%, #14a5bf 60%, #000a0d 100%) !important;
+  border-radius: 14px;
+  padding: 35px;
+  width: 50%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* Left Card: Neon Solid border and Glow */
+.live-card {
+  border: 2px solid #00d2ff;
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
+}
+
+/* Right Card: Neon Dashed border and Glow */
+.coming-soon-card {
+  border: 2px dashed #0055ff;
+  box-shadow: 0 0 25px rgba(0, 85, 255, 0.3);
+}
+
+/* Card Header Components */
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.live-badge {
+  background-color: #00bfff;
+  color: #020b24;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.soon-badge {
+  color: #a0aec0;
+  text-transform: uppercase;
+}
+
+.card-title {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+}
+
+.card-lead {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.card-body-text {
+  color: #a0aec0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Technology Accent Tags */
+.tech-tags {
+  display: flex;
+  gap: 8px;
+  margin: 25px 0 20px 0;
+}
+
+.tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+.tag-blue { background-color: #1a365d; color: #63b3ed; }
+.tag-dark { background-color: #171923; color: #63b3ed; }
+.tag-teal { background-color: #1c4d3e; color: #48bb78; }
+
+/* Interactive Buttons */
+.card-actions {
+
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.btn-blue-fill {
+  background-color: #0070f3;
+  color: #ffffff;
+}
+
+.btn-grey-fill {
+  background-color: #4a5568;
+  color: #e2e8f0;
+}
+
+/* Footer Element for Progress Card */
+.card-footer-status {
+  display: flex;
+  align-items: center;
+  color: #a0aec0;
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.icon-hammer::before {
+  content: "🔨";
+  margin-right: 8px;
+}
+
+/* Tablet and Mobile Optimization Layout */
+@media (max-width: 768px) {
+  .projects-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .project-card {
+    width: 100%;
+  }
+}
+/**Container layout **/
+/* Reset and Base Styles */
+/* ==========================================================================
+   STRICTLY ISOLATED CONTACT SECTION LAYOUT (Using original HTML classes)
+   ========================================================================== */
+
+/* Outer structural wrapper centering the section */
+/* ==========================================================================
+   STRICTLY ISOLATED LAYOUT USING ROWS AND COLUMNS
+   ========================================================================== */
+
+/* Outer structural wrapper centering the section */
+/* ==========================================================================
+   MINIMAL BOOTSTRAP OVERRIDES FOR THE CONTACT SECTION
+   ========================================================================== */
+
+/* Forces input elements to accurately remain calculated within grid walls */
+
+/* Base Layout Styles */
+/* Container safety helper */
+/* ==========================================================================
+   1. GLOBAL & UTILITY STYLES
+   ========================================================================== */
+.min-w-0 {
+    min-width: 0;
+}
+
+.contact-section {
+    background-color:radial-gradient(circle at center, #041e34 0%, #eae9ea 60%, #032a9e 100%) !important; /* Deep navy page background */
+    color: #ffffff;
+    box-shadow: 0 0 30px rgb(47, 242, 253), inset 0 0 20px rgb(16, 225, 194);
+}
+
+/* ==========================================================================
+   2. TYPOGRAPHY & LABELS
+   ========================================================================== */
+.contact-info .subtitle,
+.contact-info .card-label {
+    color: #eaedf2 !important;
+}
+
+/* Subtitle letter tracking */
+.contact-info .tracking-wider {
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   3. CONTACT INFO CARDS (CONTAINERS & GRADIENTS)
+   ========================================================================== */
+/* Gradient backgrounds using different blue shades for containers */
+.bg-blue-1 { background: linear-gradient(135deg, #06152d, #0a2246) !important; }
+.bg-blue-2 { background: linear-gradient(135deg, #081b3a, #0d2b56) !important; }
+.bg-blue-3 { background: linear-gradient(135deg, #0a2246, #103566) !important; }
+
+/* Interactive neon card configurations */
+.contact-info .info-item {
+    border: 1px solid rgba(92, 84, 237, 0.15) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 0 10px rgba(36, 206, 212, 0.888);
+}
+
+/* Card hover animation */
+.contact-info .info-item:hover {
+    transform: translateY(-3px) scale(1.01);
+    border-color: #5c54ed !important;
+    box-shadow: 0 0 15px rgba(92, 84, 237, 0.4), 
+                inset 0 0 10px rgba(92, 84, 237, 0.1) !important;
+}
+
+/* ==========================================================================
+   4. ICON SQUARE BOX STYLING
+   ========================================================================== */
+.contact-info .icon-box {
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+    display: flex;                  
+    align-items: center;            
+    justify-content: center;        
+    transition: all 0.3s ease;
+}
+
+
+/* Light up the square container box when card is hovered */
+.contact-info .info-item:hover .icon-box {
+    border-color: #5c54ed !important;
+    background-color: rgba(92, 84, 237, 0.1);
+    box-shadow: 0 0 10px rgba(92, 84, 237, 0.3);
+}
+
+/* ==========================================================================
+   5. BRAND LOGO IMAGE SELECTION
+   ========================================================================== */
+/* Centers and sizes the image logo perfectly inside the 45px square box */
+.contact-info .icon-box .card-brand-logo {
+    width: 32px;               
+    height: 32px;
+    object-fit: contain;
+    /* Optional: Inverts dark/black local logos to crisp white to match your theme */
+    
+}
+
+/* Glow up the brand logo image simultaneously when card is hovered */
+.contact-info .info-item:hover .card-brand-logo {
+    box-shadow: 0 0 8px rgb(84, 209, 237);   
+}
+
+/* ==========================================================================
+   6. CONTACT FORM FIELDS & BUTTONS
+   ========================================================================== */
+/* Form inputs styling matching the blue theme */
+.contact-form .form-control {
+    width: 100% !important;
+    display: block;
+    border-radius: 6px !important;
+    box-sizing: border-box !important;
+    background-color: rgba(24, 8, 83, 0.932) !important;
+    border: 2px solid rgb(105, 215, 243) !important;
+    box-shadow: 0 0 8px rgb(137, 8, 230) !important;
+    transition: all 0.3s ease;
+}
+
+/* Input Focus state with neon purple glow ring */
+.contact-form .form-control:focus {
+    background-color: #4b86fa !important;
+    border-color: #5c54ed !important;
+    box-shadow: 0 0 10px rgba(92, 84, 237, 0.3) !important;
+    outline: none;
+}
+
+/* Submit Button configuration */
+.contact-form .btn {
+    width: 100% !important;
+    border-radius: 6px !important;
+    background-color: #5c54ed !important;
+    border: none !important;
+    transition: all 0.3s ease;
+}
+
+/* Button Hover State */
+.contact-form .btn:hover {
+    background-color: #4a42d4 !important;
+    box-shadow: 0 0 15px rgba(92, 84, 237, 0.5) !important;
+}
+.form-label fw-semibold mb-2 {
+    color: #ffffff !important;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #00ffff !important; /* cyan glow */
+  opacity: 0.8; /* slightly transparent for a softer effect */
+
+}
+label {
+  margin-top: 10px;
+  display: inline-block; /* Helps the margin apply correctly */
+}
