@@ -3,60 +3,75 @@ const cors = require('cors');
 const mysql = require('mysql2');
 const app = express();
 
-// Middleware Configurations
+// 1. Core Middleware Configuration
 app.use(cors());
-app.use(express.urlencoded({ extended: true })); // ⚡ Crucial to read normal HTML form fields!
-app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // Essential for reading normal HTML forms
+app.use(express.json()); // Essential for handling JSON requests
 
-// 1. Create the MySQL Database Connection Pool Profile
+// 2. Adaptive Database Connection Configuration Pool
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',          
-    password: '2006', // Your exact MySQL Workbench master login password
-    database: 'portfolio_db',
+    // If Render provides a main Connection URI, it uses that first.
+    uri: process.env.DATABASE_URL, 
+    
+    // Otherwise, it falls back to the individual discrete parameters (Cloud or Local laptop)
+    host:'bjwbigb6xkocf1rwfq2c-mysql.services.clever-cloud.com',
+    user: 'u0p26txm1rn99gro',          
+    password: 'g3iPaWqdjGx4pETyYsdL', 
+    database: 'bjwbigb6xkocf1rwfq2c',
+    port: 3306,
+    
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
 });
 
-// Validate the connection channel immediately on startup
+// Test the cloud database connection pipeline instantly on application boot-up
 db.getConnection((err, connection) => {
     if (err) {
-        console.error("\n❌ MySQL Database connection failed!");
+        console.error("\n❌ Database connection failed!");
         console.error(`Reason: ${err.message}\n`);
     } else {
-        console.log("\n🔌 Connected successfully to local MySQL Database!");
+        console.log("\n🔌 Connected successfully to your Cloud MySQL Database!");
         connection.release();
     }
 });
 
+// 3. API POST Route Destination Endpoint
 app.post('/api/contact', (req, res) => {
     const { name, email, message } = req.body;
     
-    // 1. SQL command structure to insert data rows
+    // Server console tracking logs
+    console.log("\n=================================");
+    console.log("   📥 NEW PORTFOLIO SUBMISSION   ");
+    console.log("=================================");
+    console.log(`User:    ${name}`);
+    console.log(`Email:   ${email}`);
+    console.log(`Text:    ${message}`);
+    console.log("=================================\n");
+
     const sqlInsert = "INSERT INTO contact_messages (name, email, message) VALUES (?, ?, ?)";
     
     db.query(sqlInsert, [name, email, message], (err, result) => {
         if (err) {
             console.error("❌ SQL Query execution error:", err);
-            return res.status(500).send("Database save failed.");
+            return res.status(500).send("Database transaction save failed.");
         }
         
-        console.log(`\n💾 SUCCESS: Saved message from "${name}" securely inside MySQL!`);
+        console.log(`💾 SUCCESS: Row inserted safely into table row ID: ${result.insertId}`);
         
-        // 2. THIS IS THE REFRESHED MESSAGE TEMPLATE THAT SENDS BACK TO THE BROWSER
+        // Render a clean visual confirmation screen for the end-user
         res.send(`
-            <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
-                <h2 style="color: #28a745;">🎉 Success! Your message has been saved to the MySQL Database.</h2>
-                <a href="javascript:history.back()" style="font-weight: bold; color: #032a9e; text-decoration: none; font-size: 18px;">← Click here to go back to my portfolio</a>
+            <div style="text-align: center; margin-top: 60px; font-family: sans-serif; background-color: #f8f9fa; padding: 40px; max-width: 500px; margin-left: auto; margin-right: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h1 style="color: #28a745; margin-bottom: 10px;">🎉 Success!</h1>
+                <p style="color: #495057; font-size: 16px; margin-bottom: 25px;">Your message has been saved securely to the MySQL Cloud Database.</p>
+                <a href="javascript:history.back()" style="font-weight: bold; color: #032a9e; text-decoration: none; border: 2px solid #032a9e; padding: 10px 20px; border-radius: 5px; background-color: #ffffff; transition: all 0.2s;">← Go Back to Portfolio</a>
             </div>
         `);
     });
 });
 
-// Start the server pipeline and listen on port 5000
-const PORT = 5000;
+// 4. Start the server engine listening on dynamic cloud environmental port mappings
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`>>> Backend server is running on http://localhost:${PORT}`);
+    console.log(`>>> Backend server is running on port ${PORT}`);
 });
-
