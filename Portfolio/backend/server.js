@@ -12,7 +12,7 @@ app.use(express.json());
 const db = mysql.createPool({
     host: 'localhost',
     user: 'root',          
-    password: 'yours', // Your exact MySQL Workbench master login password
+    password: '2006', // Your exact MySQL Workbench master login password
     database: 'portfolio_db',
     waitForConnections: true,
     connectionLimit: 10,
