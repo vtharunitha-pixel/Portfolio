@@ -14,7 +14,7 @@ const db = mysql.createPool({
     uri: process.env.DATABASE_URL, 
     
     // Otherwise, it falls back to the individual discrete parameters (Cloud or Local laptop)
-    host: '://clever-cloud.com',
+    host: 'bjwbigb6xkocf1rwfq2c-mysql.services.clever-cloud.com',
     user: 'u0p26txm1rn99gro',          
     password: 'g3iPaWqdjGx4pETyYsdL', 
     database: 'bjwbigb6xkocf1rwfq2c',
